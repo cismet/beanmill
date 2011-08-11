@@ -36,7 +36,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 
 /**
- * DOCUMENT ME!
+ * 
  *
  * @version  $Revision$, $Date$
  */
