@@ -314,8 +314,8 @@ public abstract class FrameControl extends AbstractAction {
             final Dimension frameSize;
             int x;
             int y;
-            int width;
-            int height;
+            final int width;
+            final int height;
             final int totalShrink;
 
             frames = getActiveFrames();
