@@ -36,7 +36,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 
 /**
- * 
+ * What a comment
  *
  * @version  $Revision$, $Date$
  */
