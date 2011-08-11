@@ -1,5 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.0//EN" "http://www.netbeans.org/dtds/filesystem-1_0.dtd">
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
 <filesystem>
- 
+    <folder name="Actions">
+        <folder name="Other">
+            <file name="de-cismet-beanmill-LoggingAction.instance"/>
+        </folder>
+        <folder name="Tools">
+            <file name="de-cismet-beanmill-OnlyThisClassLogging.instance"/>
+        </folder>
+        <folder name="Window">
+            <file name="de-cismet-beanmill-LoggingAction.instance"/>
+        </folder>
+    </folder>
+    <folder name="Editors">
+        <folder name="Popup">
+            <attr name="org-openide-actions-CutAction.instance/de-cismet-beanmill-OnlyThisClassLogging.instance" boolvalue="true"/>
+            <file name="de-cismet-beanmill-OnlyThisClassLogging.instance" url="de-cismet-beanmill-OnlyThisClassLogging.instance"/>
+            <attr name="de-cismet-beanmill-OnlyThisClassLogging.instance/org-openide-actions-CopyAction.instance" boolvalue="true"/>
+        </folder>
+    </folder>
+    <folder name="Menu">
+        <folder name="Window">
+            <folder name="Output"/>
+            <file name="de-cismet-beanmill-LoggingAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Other/de-cismet-beanmill-LoggingAction.instance"/>
+                <attr name="position" intvalue="1150"/>
+            </file>
+        </folder>
+    </folder>
+    <folder name="OptionsDialog">
+        <folder name="Advanced">
+            <file name="de-cismet-beanmill-NetbeansAdvancedOption.instance"/>
+        </folder>
+    </folder>
+    <folder name="Windows2">
+        <folder name="Components">
+            <file name="LoggingTopComponent.settings" url="LoggingTopComponentSettings.xml"/>
+        </folder>
+        <folder name="Modes">
+            <folder name="output">
+                <file name="LoggingTopComponent.wstcref" url="LoggingTopComponentWstcref.xml"/>
+            </folder>
+        </folder>
+    </folder>
 </filesystem>
