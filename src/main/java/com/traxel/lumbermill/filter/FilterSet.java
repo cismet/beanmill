@@ -6,36 +6,30 @@
 *
 ****************************************************/
 /*
-  This file is part of Lumbermill.
+ This file is part of Lumbermill.
 
-  Lumbermill is free software; you can redistribute it
-  and/or modify it under the terms of the GNU General Public
-  License as published by the Free Software Foundation;
-  either version 2 of the License, or (at your option) any
-  later version.
+ Lumbermill is free software; you can redistribute it
+ and/or modify it under the terms of the GNU General Public
+ License as published by the Free Software Foundation;
+ either version 2 of the License, or (at your option) any
+ later version.
 
-  Lumbermill is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied
-  warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-  PURPOSE.  See the GNU General Public License for more
-  details.
+ Lumbermill is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied
+ warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+ PURPOSE.  See the GNU General Public License for more
+ details.
 
-  You should have received a copy of the GNU General Public
-  License along with Lumbermill; if not, write to the Free
-  Software Foundation, Inc., 59 Temple Place, Suite 330,
-  Boston, MA 02111-1307 USA
-*/
+ You should have received a copy of the GNU General Public
+ License along with Lumbermill; if not, write to the Free
+ Software Foundation, Inc., 59 Temple Place, Suite 330,
+ Boston, MA 02111-1307 USA
+ */
 package com.traxel.lumbermill.filter;
 
 import com.traxel.lumbermill.event.Event;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.Vector;
+import java.util.*;
 
 /**
  * DOCUMENT ME!
@@ -49,10 +43,8 @@ public class FilterSet implements Filter, FilterListener {
     // ---------------------------------------------
     // Instance Definition
     // ---------------------------------------------
-
-    private final Set FILTERS = Collections.synchronizedSet(new LinkedHashSet());
-    private final Set LISTENERS = Collections.synchronizedSet(new HashSet());
-
+    private final Set filters = new LinkedHashSet();
+    private final Set listeners = new HashSet();
     private boolean active = true;
 
     //~ Methods ----------------------------------------------------------------
@@ -63,16 +55,16 @@ public class FilterSet implements Filter, FilterListener {
      * @return  DOCUMENT ME!
      */
     public List getFilters() {
-        return new Vector(FILTERS);
+        return new ArrayList(filters);
     }
 
     @Override
     public boolean isVisible(final Event event) {
-        synchronized (FILTERS) {
+        synchronized (filters) {
             final Iterator it;
             Filter filter;
 
-            it = FILTERS.iterator();
+            it = filters.iterator();
             while (it.hasNext()) {
                 filter = (Filter)it.next();
 
@@ -87,15 +79,15 @@ public class FilterSet implements Filter, FilterListener {
 
     @Override
     public void addFilterListener(final FilterListener listener) {
-        synchronized (LISTENERS) {
-            LISTENERS.add(listener);
+        synchronized (listeners) {
+            listeners.add(listener);
         }
     }
 
     @Override
     public void removeFilterListener(final FilterListener listener) {
-        synchronized (LISTENERS) {
-            LISTENERS.remove(listener);
+        synchronized (listeners) {
+            listeners.remove(listener);
         }
     }
 
@@ -107,7 +99,6 @@ public class FilterSet implements Filter, FilterListener {
     // -------------------------------------------
     // FilterListener Implementation
     // -------------------------------------------
-
     @Override
     public void filterChange(final FilterEvent event) {
         fireFilterEvent(event);
@@ -119,9 +110,9 @@ public class FilterSet implements Filter, FilterListener {
      * @param  filter  DOCUMENT ME!
      */
     public void add(final Filter filter) {
-        synchronized (FILTERS) {
+        synchronized (filters) {
             filter.addFilterListener(this);
-            FILTERS.add(filter);
+            filters.add(filter);
             fireFilterAdded(filter);
         }
     }
@@ -132,9 +123,9 @@ public class FilterSet implements Filter, FilterListener {
      * @param  filter  DOCUMENT ME!
      */
     public void remove(final Filter filter) {
-        synchronized (FILTERS) {
+        synchronized (filters) {
             filter.removeFilterListener(this);
-            FILTERS.remove(filter);
+            filters.remove(filter);
             fireFilterRemoved(filter);
         }
     }
@@ -143,9 +134,13 @@ public class FilterSet implements Filter, FilterListener {
      * DOCUMENT ME!
      */
     public void removeAll() {
-        final Set clone = new HashSet(FILTERS);
-        for (final Object f : clone) {
-            remove((Filter)f);
+        final Iterator<Filter> it;
+        synchronized (filters) {
+            it = new HashSet<Filter>(filters).iterator();
+        }
+
+        while (it.hasNext()) {
+            remove(it.next());
         }
     }
 
@@ -179,15 +174,16 @@ public class FilterSet implements Filter, FilterListener {
      * @param  event  DOCUMENT ME!
      */
     private void fireFilterEvent(final FilterEvent event) {
-        synchronized (LISTENERS) {
-            final Iterator it;
-            FilterListener listener;
+        final Iterator it;
+        synchronized (listeners) {
+            it = new HashSet(listeners).iterator();
+        }
 
-            it = LISTENERS.iterator();
-            while (it.hasNext()) {
-                listener = (FilterListener)it.next();
-                listener.filterChange(event);
-            }
+        FilterListener listener;
+
+        while (it.hasNext()) {
+            listener = (FilterListener)it.next();
+            listener.filterChange(event);
         }
     }
 
