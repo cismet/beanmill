@@ -36,7 +36,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 
 /**
- * The main GUI Framne (not used in Beanmill)
+ * The main GUI Framne (not used in Beanmill).
  *
  * @version  $Revision$, $Date$
  */
