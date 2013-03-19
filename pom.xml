@@ -16,6 +16,46 @@
 
     <name>Beanmill Logging Viewer (Log4J, JSR47)</name>
     <description>A logging viewer with a tight integration into Netbeans.</description>
+    <organization>
+        <name>cismet GmbH</name>
+        <url>http://www.cismet.de</url>
+    </organization>
+    <licenses>
+        <license>
+            <name>GNU General Public License</name>
+            <distribution>repo</distribution>
+            <url>http://www.gnu.org/licenses/gpl.html</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>thell</id>
+            <name>Thorsten Hell</name>
+            <email>thorsten.hell@cismet.de</email>
+            <organization>cismet GmbH</organization>
+        </developer>
+        <developer>
+            <id>mscholl</id>
+            <name>Martin Scholl</name>
+            <email>martin.scholl@cismet.de</email>
+            <organization>cismet GmbH</organization>
+        </developer>
+    </developers>
+
+    <prerequisites>
+        <maven>3</maven>
+    </prerequisites>
+
+    <scm>
+        <connection>scm:https://github.com/cismet/beanmill.git</connection>
+        <developerConnection>scm:git:git@github.com:cismet/beanmill.git</developerConnection>
+        <url>https://github.com/cismet/beanmill</url>
+    </scm>
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/cismet/beanmill/issues/</url>
+    </issueManagement>
 
     <properties>
         <!-- to be compatible with ABF -->
