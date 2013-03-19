@@ -43,4 +43,15 @@
             </folder>
         </folder>
     </folder>
+    <folder name="Services">
+        <folder name="AutoupdateType">
+            <file name="BEANMILL_Update_Center.instance">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="de.cismet.beanmill.Bundle"/>
+                <attr name="enabled" boolvalue="true"/>
+                <attr name="instanceOf" stringvalue="org.netbeans.spi.autoupdate.UpdateProvider"/>
+                <attr name="instanceCreate" methodvalue="org.netbeans.modules.autoupdate.updateprovider.AutoupdateCatalogFactory.createUpdateProvider"/>
+                <attr name="url" stringvalue="http://www.cismet.de/updatecenters/beanmill/updates.xml"/>
+            </file>
+        </folder>
+    </folder>
 </filesystem>
