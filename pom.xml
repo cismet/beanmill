@@ -16,10 +16,6 @@
 
     <name>Beanmill Logging Viewer (Log4J, JSR47)</name>
     <description>A logging viewer with a tight integration into Netbeans.</description>
-    <organization>
-        <name>cismet GmbH</name>
-        <url>http://www.cismet.de</url>
-    </organization>
     <licenses>
         <license>
             <name>GNU General Public License</name>
