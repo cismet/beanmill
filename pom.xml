@@ -6,7 +6,7 @@
     <parent>
         <groupId>de.cismet</groupId>
         <artifactId>cismet-parent</artifactId>
-        <version>2.0-SNAPSHOT</version>
+        <version>2.0</version>
     </parent>
 
     <groupId>de.cismet</groupId>
@@ -15,7 +15,7 @@
     <packaging>nbm</packaging>
 
     <name>Beanmill Logging Viewer (Log4J, JSR47)</name>
-    <description>A logging viewer with a strong integration into Netbeans.</description>
+    <description>A logging viewer with a tight integration into Netbeans.</description>
 
     <properties>
         <!-- to be compatible with ABF -->
@@ -101,7 +101,7 @@
         <dependency>
             <groupId>de.cismet.commons</groupId>
             <artifactId>cismet-commons</artifactId>
-            <version>1.0.1</version>
+            <version>2.0-rc3</version>
         </dependency>
         <dependency>
             <groupId>org.swinglabs</groupId>
@@ -110,13 +110,56 @@
         </dependency>
     </dependencies>
 
+    <repositories>
+        <repository>
+            <id>cismet-repo</id>
+            <url>https://repo.cismet.de/repo</url>
+            <releases>
+                <enabled>true</enabled>
+                <checksumPolicy>warn</checksumPolicy>
+                <updatePolicy>daily</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <checksumPolicy>warn</checksumPolicy>
+                <updatePolicy>interval:60</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>cismet-repo</id>
+            <url>https://repo.cismet.de/repo</url>
+            <releases>
+                <enabled>true</enabled>
+                <checksumPolicy>warn</checksumPolicy>
+                <updatePolicy>daily</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <checksumPolicy>warn</checksumPolicy>
+                <updatePolicy>interval:60</updatePolicy>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>nbm-maven-plugin</artifactId>
-                <version>3.0</version>
+                <version>3.9</version>
                 <extensions>true</extensions>
+                <configuration>
+                    <moduleType>normal</moduleType>
+                    <codeNameBase>de.cismet.beanmill/1</codeNameBase>
+                    <licenseName>GPL</licenseName>
+                    <licenseFile>${basedir}/src/main/license/gpl-3.0.txt</licenseFile>
+                    <homePageUrl>http://github.com/cismet/beanmill</homePageUrl>
+                    <keystore>${de.cismet.keystore.path}</keystore>
+                    <keystorealias>cismet</keystorealias>
+                    <keystorepassword>${de.cismet.keystore.pass}</keystorepassword>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
