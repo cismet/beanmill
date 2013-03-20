@@ -212,6 +212,7 @@
                     <useDefaultManifestFile>true</useDefaultManifestFile>
                 </configuration>
             </plugin>
+            <!-- NOTE: remember to set up updatecenter-upload server entry in settings -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>wagon-maven-plugin</artifactId>
@@ -222,7 +223,17 @@
                     <fromDir>${basedir}/target/netbeans_site</fromDir>
                     <toDir>home/vhost/home/vhost_cismet/htdocs/www.cismet.de/updatecenters/beanmill</toDir>
                 </configuration>
-                </plugin>
+            </plugin>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <preparationGoals>clean install</preparationGoals>
+                    <goals>deploy nbm:autoupdate wagon:upload</goals>
+                        <!-- jalopy format is not favourable for release builds -->
+                    <arguments>-Djalopy.skip=true</arguments>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
