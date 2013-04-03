@@ -3,6 +3,8 @@ beanmill
 
 beanmill is a log4j logging viewer plugin for the NetBeans IDE.
 
+![Figure 1](http://www.cismet.de/images/beanmillSmall.png)
+
 License
 =======
 
