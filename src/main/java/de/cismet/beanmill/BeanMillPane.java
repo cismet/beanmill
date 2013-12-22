@@ -328,7 +328,6 @@ public final class BeanMillPane extends javax.swing.JPanel {
                     }
                     try {
                         regexFilter.setRegex(txtRegExp.getText());
-                        txtRegExp.setForeground(Color.BLACK);
                         String regex = ".*" + txtRegExp.getText() + ".*";
                         regex = regex.replaceAll("(\\.\\*)+", ".*");
                         txtRegExp.setToolTipText("<html>" + "nice RegExp ;-)<br>"
