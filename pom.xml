@@ -37,6 +37,18 @@
             <organization>cismet GmbH</organization>
         </developer>
     </developers>
+    <contributors>
+        <contributor>
+            <name>Arnaud Fonce</name>
+            <email>arnaud.fonce@r-w-x.net</email>
+            <url>http://blog.r-w-x.net</url>
+            <organization>Room Work eXperience</organization>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>France/Paris</timezone>
+        </contributor>
+    </contributors>
 
     <prerequisites>
         <maven>3</maven>
