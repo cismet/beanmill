@@ -1,4 +1,4 @@
-beanmill
+beanmill [![Build Status](http://ci.cismet.de/buildStatus/icon?job=beanmill)](https://ci.cismet.de/job/beanmill/)
 ========
 
 beanmill is a log4j logging viewer plugin for the NetBeans IDE.
