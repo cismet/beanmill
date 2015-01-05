@@ -10,7 +10,7 @@
 
     <groupId>de.cismet</groupId>
     <artifactId>beanmill</artifactId>
-    <version>2.6</version>
+    <version>2.6.1</version>
     <packaging>nbm</packaging>
 
     <name>Beanmill Logging Viewer (Log4J, JSR47)</name>
@@ -46,7 +46,8 @@
         <connection>scm:https://github.com/cismet/beanmill.git</connection>
         <developerConnection>scm:git:git@github.com:cismet/beanmill.git</developerConnection>
         <url>https://github.com/cismet/beanmill</url>
-    </scm>
+      <tag>v2.6.1</tag>
+  </scm>
     <issueManagement>
         <system>GitHub</system>
         <url>https://github.com/cismet/beanmill/issues/</url>
@@ -137,6 +138,13 @@
             <groupId>de.cismet.commons</groupId>
             <artifactId>cismet-commons</artifactId>
             <version>2.0-rc3</version>
+            <!-- not explicitely needed and messes up the xml11 config of netbeans -->
+            <exclusions>
+                <exclusion>
+                    <groupId>xerces</groupId>
+                    <artifactId>xercesImpl</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.swinglabs</groupId>
@@ -201,6 +209,15 @@
                     <keystore>${de.cismet.keystore.path}</keystore>
                     <keystorealias>cismet</keystorealias>
                     <keystorepassword>${de.cismet.keystore.pass}</keystorepassword>
+                    <!-- 
+                        Hmm, http://mojo.codehaus.org/nbm-maven/nbm-maven-plugin/index.html states that packages are
+                        private by default and that you have to explicitely declare public packages while
+                        http://bits.netbeans.org/dev/javadoc/org-openide-modules/org/openide/modules/doc-files/classpath.html#public-packages
+                        says that everything is public by default if not declared otherwise. Thus we explicitely create
+                        two entries for the public packages which are empty, this one and the one in the manifest.
+                    -->
+                    <publicPackages>
+                    </publicPackages>
                 </configuration>
             </plugin>
             <plugin>
@@ -212,6 +229,7 @@
                     <useDefaultManifestFile>true</useDefaultManifestFile>
                 </configuration>
             </plugin>
+            <!-- NOTE: remember to set up updatecenter-upload server entry in settings -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>wagon-maven-plugin</artifactId>
@@ -222,7 +240,17 @@
                     <fromDir>${basedir}/target/netbeans_site</fromDir>
                     <toDir>home/vhost/home/vhost_cismet/htdocs/www.cismet.de/updatecenters/beanmill</toDir>
                 </configuration>
-                </plugin>
+            </plugin>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <preparationGoals>clean install</preparationGoals>
+                    <goals>deploy nbm:autoupdate wagon:upload</goals>
+                        <!-- jalopy format is not favourable for release builds -->
+                    <arguments>-Djalopy.skip=true</arguments>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
