@@ -10,7 +10,7 @@
 
     <groupId>de.cismet</groupId>
     <artifactId>beanmill</artifactId>
-    <version>2.7-SNAPSHOT</version>
+    <version>2.6.1</version>
     <packaging>nbm</packaging>
 
     <name>Beanmill Logging Viewer (Log4J, JSR47)</name>
@@ -46,7 +46,8 @@
         <connection>scm:https://github.com/cismet/beanmill.git</connection>
         <developerConnection>scm:git:git@github.com:cismet/beanmill.git</developerConnection>
         <url>https://github.com/cismet/beanmill</url>
-    </scm>
+      <tag>v2.6.1</tag>
+  </scm>
     <issueManagement>
         <system>GitHub</system>
         <url>https://github.com/cismet/beanmill/issues/</url>
