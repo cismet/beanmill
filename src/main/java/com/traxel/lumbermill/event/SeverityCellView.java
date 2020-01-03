@@ -39,6 +39,7 @@ class SeverityCellView extends DefaultTableCellRenderer {
         color = Colors.blend(2, color, 1, Color.white);
         setBackground(color);
         setFont(table.getFont());
+        setForeground(Color.BLACK);
         setValue(" " + severity.toString());
 
         return this;

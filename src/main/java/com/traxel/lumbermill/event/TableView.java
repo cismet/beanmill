@@ -162,14 +162,6 @@ public class TableView extends JTable {
             } catch (final Exception e) {
                 // LOG.error("error while preparing renderer", e);
             }
-            if (!((renderer instanceof SeverityCellView)
-                            || this.getSelectionModel().isSelectedIndex(rowIndex))) {
-                if (event instanceof XMLEvent) {
-                    jc.setBackground(new Color(236, 233, 216));
-                } else {
-                    jc.setBackground(Color.white);
-                }
-            }
         } else {
             if (LOG.isDebugEnabled()) {
                 LOG.debug("renderer component: " + c);
